@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">LifeStyleS</string>
+    <string name="hello">Hello Word</string>
+    <string name="creer">Create</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="ok">Ok</string>
+    <string name="nom">Last Name:</string>
+    <string name="prenom">First Name:</string>
+    <string name="email">Email:</string>
+    <string name="sexe">Sexe</string>
+    <string name="sexe_m">M</string>
+    <string name="sexe_f">F</string>
+    <string name="matricule">Matricule</string>
+    <string name="session">Session:</string>
+
+<!--    erreur traitement formulaire contact-->
+    <string name="error_form_contact">Veuillez bien remplir tout les champs</string>
+    <string name="sucess_init_form">Votre formulaire est reinitialise avec Sucess</string>
+</resources>

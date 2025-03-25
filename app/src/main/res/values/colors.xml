@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_color">#CB343452</color>
+    <color name="blue_background">#E3F2FD</color> <!-- Bleu très clair -->
+    <color name="blue_500">#03A9F4</color>         <!-- Bleu clair -->
+    <color name="blue_700">#0288D1</color>         <!-- Bleu plus foncé -->
+    <color name="sky_blue_200">#81D4FA</color>           <!-- Bleu ciel léger -->
+    <color name="sky_blue_700">#01579B</color>
+</resources>

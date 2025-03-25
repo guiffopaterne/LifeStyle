@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Style de Vie</string>
+    <string name="hello">Bonjour Le Monde</string>
+    <string name="creer">Creer</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="ok">Ok</string>
+    <string name="nom">Nom:</string>
+    <string name="prenom">Prenom:</string>
+    <string name="email">Email</string>
+    <string name="sexe">Sexe</string>
+    <string name="sexe_m">M</string>
+    <string name="sexe_f">F</string>
+    <string name="matricule">Matricule</string>
+    <string name="session">Session:</string>
+
+
+    <string name="error_form_contact">Veuillez bien remplir tout les champs</string>
+    <string name="sucess_init_form">Votre formulaire est reinitialise avec Sucess</string>
+</resources>
