@@ -93,8 +93,7 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         int id_view = v.getId();
         if(btnCree.getId()==id_view){
             if(validateInputs()){
-                String sex_value = "M";
-                if(sexeF.isChecked()) sex_value ="F";
+                handleSubmit();
                 Log.e(TAG,"");
             }else{
                 Toast.makeText(this,getString(R.string.error_form_contact),Toast.LENGTH_SHORT).show();
@@ -106,4 +105,43 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         }
 
     }
+
+    private void handleSubmit() {
+            String sex_value = sexeF.isChecked() ? "F" : "M";
+            Toast.makeText(this, "Formulaire soumis : " +
+                            "\nNom : " + nom.getText().toString() +
+                            "\nPrenom : " + prenom.getText().toString() +
+                            "\nEmail : " + email.getText().toString() +
+                            "\nSexe : " + sex_value +
+                            "\nMatricule : " + matricule.getText().toString() +
+                            "\nSession : " + session.getText().toString(),
+                    Toast.LENGTH_LONG).show();
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("CycleDeVie", "onStart appele");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("CycleDeVie", "onResume appele");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("CycleDeVie", "onPause appele");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("CycleDeVie", "onStop appele");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        Log.
+    }
+}

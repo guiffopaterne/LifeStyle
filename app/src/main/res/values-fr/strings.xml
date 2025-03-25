@@ -17,4 +17,5 @@
 
     <string name="error_form_contact">Veuillez bien remplir tout les champs</string>
     <string name="sucess_init_form">Votre formulaire est reinitialise avec Sucess</string>
+    <string name="todo">todo</string>
 </resources>
