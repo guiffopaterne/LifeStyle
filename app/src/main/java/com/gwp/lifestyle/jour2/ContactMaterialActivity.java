@@ -88,7 +88,6 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         session.setText(R.string.exemple_Session);
         sexeM.setChecked(true);
         sexeF.setChecked(false);
-
     }
 
     @Override

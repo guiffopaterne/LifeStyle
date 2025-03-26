@@ -14,7 +14,7 @@
     <string name="matricule">Matricule</string>
     <string name="session">Session:</string>
 
-<!--    erreur traitement formulaire contact-->
+    <!--    erreur traitement formulaire contact-->
     <string name="error_form_contact">Veuillez bien remplir tout les champs</string>
     <string name="sucess_init_form">Votre formulaire est reinitialise avec Sucess</string>
     <string name="todo">todo</string>

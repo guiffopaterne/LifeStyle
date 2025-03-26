@@ -14,16 +14,20 @@
         android:theme="@style/Theme.LifeStyle"
         tools:targetApi="31">
         <activity
-            android:name=".jour2.ContactMaterialActivity"
+            android:name=".jour3.HabitudeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".jour2.ContactMaterialActivity"
+            android:exported="true"/>
+        <activity
             android:name=".jour2.ContactActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".CatActivity"
             android:exported="false" />
