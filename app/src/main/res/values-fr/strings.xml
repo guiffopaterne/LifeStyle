@@ -23,4 +23,6 @@
     <string name="my_email">guiffopaterne@m2iformation.fr</string>
     <string name="exemple_matricule">2025PAT/56</string>
     <string name="exemple_Session">SE25655688</string>
+    <string name="refresh">Refresh</string>
+    <string name="print_list">Imprimer</string>
 </resources>

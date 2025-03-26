@@ -1,4 +1,4 @@
-package com.gwp.lifestyle.jour3;
+package com.gwp.lifestyle.jour3.list_habitude;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,17 +15,19 @@ public class HabitudeAdaptateur extends RecyclerView.Adapter<HabitudeViewHolder>
     private Context context;
     private ArrayList<Habitude> habitudes;
     private int positionAdapter;
+    private OnHabitudeItemListener listener;
 
-    public HabitudeAdaptateur(Context context, ArrayList<Habitude> habitudes) {
+    public HabitudeAdaptateur(Context context, ArrayList<Habitude> habitudes,OnHabitudeItemListener listener) {
         this.context = context;
         this.habitudes = habitudes;
+        this.listener =listener;
     }
 
     @NonNull
     @Override
     public HabitudeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemHabitudeBinding ui = ItemHabitudeBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        return new HabitudeViewHolder(ui);
+        return new HabitudeViewHolder(ui,listener);
     }
 
     @Override

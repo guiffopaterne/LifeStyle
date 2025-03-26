@@ -1,4 +1,4 @@
-package com.gwp.lifestyle.jour3;
+package com.gwp.lifestyle.jour3.list_habitude;
 
 public class Habitude {
     private String title;

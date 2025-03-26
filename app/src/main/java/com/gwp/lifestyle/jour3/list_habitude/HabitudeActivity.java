@@ -1,25 +1,30 @@
-package com.gwp.lifestyle.jour3;
+package com.gwp.lifestyle.jour3.list_habitude;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.gwp.lifestyle.R;
 import com.gwp.lifestyle.databinding.ActivityHabitudeBinding;
 
 import java.util.ArrayList;
 
-public class HabitudeActivity extends AppCompatActivity {
+public class HabitudeActivity extends AppCompatActivity implements OnHabitudeItemListener {
     private RecyclerView recyclerView;
     private ActivityHabitudeBinding ui;
     private HabitudeAdaptateur adaptateur;
+    ArrayList<Habitude> habitudes = new ArrayList<>();
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,20 @@ public class HabitudeActivity extends AppCompatActivity {
         ui = ActivityHabitudeBinding.inflate(getLayoutInflater());
         setContentView(ui.getRoot());
         recyclerView = ui.listHabitude;
+        toolbar = ui.topAppBar;
+        assert toolbar != null;
+        toolbar.setOnMenuItemClickListener(
+                item -> {
+
+                    if(item.getItemId()==R.id.refresh_list){
+                        Toast.makeText(this,"C'est bon",Toast.LENGTH_LONG).show();
+                        return true;
+                    }
+                    return true;
+
+                }
+        );
+//        toolbar.setNavigationOnClickListener();
         setupRecyclerView();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.habitude_activity), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -36,9 +55,17 @@ public class HabitudeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.refresh_list){
+            Toast.makeText(this,"C'est bon",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
 
     private ArrayList<Habitude> getData(){
-        ArrayList<Habitude> habitudes = new ArrayList<>();
+
         for (int i = 0; i < 100; i++) {
             habitudes.add(new Habitude("Lecture quotidienne", "Consacrer chaque jour du temps à la lecture, que ce soit des livres, des articles ou des blogs."));
             habitudes.add(new Habitude("Méditation matinale", "Commencer la journée avec une séance de méditation pour apaiser l'esprit."));
@@ -64,7 +91,7 @@ public class HabitudeActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(){
-        adaptateur = new HabitudeAdaptateur(this,getData());
+        adaptateur = new HabitudeAdaptateur(this,getData(), this);
         recyclerView.setAdapter(adaptateur);
 //        StaggeredGridLayoutManager lm = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         LinearLayoutManager lm = new LinearLayoutManager(this);
@@ -72,4 +99,10 @@ public class HabitudeActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onHabitudeClick(int position) {
+        habitudes.remove(position);
+        adaptateur.notifyDataSetChanged();
+        Toast.makeText(this,"Click sur Item"+position,Toast.LENGTH_LONG).show();
+    }
 }
