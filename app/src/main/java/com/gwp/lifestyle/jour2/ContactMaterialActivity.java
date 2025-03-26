@@ -1,6 +1,7 @@
 package com.gwp.lifestyle.jour2;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,7 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         ui = ActivityContactMaterialBinding.inflate(getLayoutInflater());
         setContentView(ui.getRoot());
         initFormField();
+        initFormValues();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.contact_material), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -79,11 +81,11 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
     }
 
     private void initFormValues(){
-        nom.setText("");
-        prenom.setText("");
-        email.setText("");
-        matricule.setText("");
-        session.setText("");
+        nom.setText(R.string.paterne_guiffo);
+        prenom.setText(R.string.paterne);
+        email.setText(R.string.my_email);
+        matricule.setText(R.string.exemple_matricule);
+        session.setText(R.string.exemple_Session);
         sexeM.setChecked(true);
         sexeF.setChecked(false);
 
@@ -95,8 +97,16 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         int id_view = v.getId();
         if(btnCree.getId()==id_view){
             if(validateInputs()){
-                handleSubmit();
-                Log.e(TAG,"");
+                setupDialogue("Resultats du Formulaire",resultForm(),
+                        (dialog, which) -> {
+                            Intent intent = new Intent(this, ContactActivity.class);
+                            startActivity(intent);
+                            finish();
+                        },
+                        (dialog,which)->{
+
+                        }
+                        ).show();
             }else{
                 Toast.makeText(this,getString(R.string.error_form_contact),Toast.LENGTH_SHORT).show();
             }

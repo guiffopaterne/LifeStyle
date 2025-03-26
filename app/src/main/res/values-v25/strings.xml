@@ -14,4 +14,9 @@
     <string name="session">Session:</string>
     <string name="sucess_init_form">Votre formulaire est reinitialise avec Sucess</string>
     <string name="todo">todo</string>
+    <string name="paterne_guiffo">Paterne Guiffo</string>
+    <string name="paterne">"Paterne "</string>
+    <string name="my_email">guiffopaterne@m2iformation.fr</string>
+    <string name="exemple_matricule">2025PAT/56</string>
+    <string name="exemple_Session">SE25655688</string>
 </resources>
