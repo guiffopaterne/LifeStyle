@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_list">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.gwp.lifestyle.jour3.bottom_navigation.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_camera"
+        android:name="com.gwp.lifestyle.jour4.bottom_navigation.ui.camera.CameraFragment"
+        android:label="@string/title_camera"
+        tools:layout="@layout/fragment_camera" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.gwp.lifestyle.jour3.bottom_navigation.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_list"
+        android:name="com.gwp.lifestyle.jour4.bottom_navigation.ui.list.ListFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_list" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.gwp.lifestyle.jour3.bottom_navigation.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_maps"
+        android:name="com.gwp.lifestyle.jour4.bottom_navigation.ui.maps.MapsFragment"
+        android:label="@string/title_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>
