@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_gallery">Galerie</string>
+    <string name="take">Prendre une Photo</string>
+    <string name="partage_cette_photo">Partage cette Photo</string>
 </resources>

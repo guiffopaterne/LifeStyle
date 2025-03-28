@@ -1,6 +1,7 @@
 package com.gwp.lifestyle.jour5.permissions;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.POST_NOTIFICATIONS;
 
 import android.app.Activity;
@@ -33,6 +34,11 @@ public class PermissionsDetails {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             checkAndRequestPermission(activity, ACCESS_COARSE_LOCATION, launcher);
         }
+    }
+//    CAMERA
+
+    public static void checkAndRequestCameraPermission(Activity activity, ActivityResultLauncher<String> launcher) {
+        checkAndRequestPermission(activity,CAMERA,launcher);
     }
 
 

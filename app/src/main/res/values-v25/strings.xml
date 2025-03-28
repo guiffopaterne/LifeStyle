@@ -22,4 +22,6 @@
     <string name="refresh">Refresh</string>
     <string name="print_list">Imprimer</string>
     <string name="title_gallery">Galerie</string>
+    <string name="take">Prendre une Photo</string>
+    <string name="partage_cette_photo">Partage cette Photo</string>
 </resources>

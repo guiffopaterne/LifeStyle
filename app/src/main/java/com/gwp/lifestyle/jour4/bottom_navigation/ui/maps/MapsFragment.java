@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.gwp.lifestyle.LifeStyleApplication;
+import com.gwp.lifestyle.R;
 import com.gwp.lifestyle.databinding.FragmentMapsBinding;
 
 import org.osmdroid.api.IMapController;
@@ -112,6 +113,7 @@ public class MapsFragment extends Fragment {
         mapController.setCenter(userLocation);
         marker.setPosition(userLocation);
         marker.setTitle("Votre position");
+        marker.setIcon(activity.getDrawable( org.osmdroid.library.R.drawable.osm_ic_follow_me_on));
         mapView.getOverlays().add(marker);
         mapView.invalidate();
         Toast.makeText(activity, "Latitude: " + latitude + ", Longitude: " + longitude, Toast.LENGTH_LONG).show();
