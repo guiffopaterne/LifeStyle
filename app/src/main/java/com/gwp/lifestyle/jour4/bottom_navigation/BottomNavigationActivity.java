@@ -1,23 +1,33 @@
 package com.gwp.lifestyle.jour4.bottom_navigation;
 
+import static com.gwp.lifestyle.jour5.permissions.PermissionsDetails.checkAndRequestNotificationPermission;
+import static com.gwp.lifestyle.jour5.permissions.PermissionsGlobal.REQUEST_CODE_PERMISSION;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gwp.lifestyle.R;
 import com.gwp.lifestyle.databinding.ActivityBottomNavigationBinding;
+import com.gwp.lifestyle.jour5.InternetCheckService;
 
 public class BottomNavigationActivity extends AppCompatActivity {
 
     private ActivityBottomNavigationBinding binding;
     private MaterialToolbar toolbar;
+    private ActivityResultLauncher<String> permissionNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,43 @@ public class BottomNavigationActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_bottom_navigation);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+//        PermissionsGlobal.requestPermissions(this);
+        permissionNotification = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted-> Toast.makeText(this,"Permission "+ (isGranted?"":"non " )+"Accordee",Toast.LENGTH_SHORT).show()
+        );
+        checkAndRequestNotificationPermission(this,permissionNotification);
+//
+//        startInternetCheckService();
     }
 
+    private void startInternetCheckService() {
+        Intent serviceIntent = new Intent(this, InternetCheckService.class);
+        startForegroundService(serviceIntent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopInternetCheckService();
+    }
+
+    private void stopInternetCheckService() {
+        Intent serviceIntent = new Intent(this, InternetCheckService.class);
+        stopService(serviceIntent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==REQUEST_CODE_PERMISSION){
+            Toast.makeText(this,"Permission "+ (grantResults.length==0?"":"non " )+"Accordee",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

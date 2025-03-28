@@ -45,4 +45,7 @@
     <string name="title_camera">Camera</string>
     <string name="title_gallery">Galerie</string>
     <string name="title_maps">Maps</string>
+    <string name="more_picture">Plus D\'image</string>
+    <string name="save">Save</string>
+    <string name="clear_all">supprime BD</string>
 </resources>
