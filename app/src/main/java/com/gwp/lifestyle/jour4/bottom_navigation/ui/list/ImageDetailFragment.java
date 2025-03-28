@@ -2,25 +2,20 @@ package com.gwp.lifestyle.jour4.bottom_navigation.ui.list;
 
 import static com.gwp.lifestyle.jour4.bottom_navigation.ui.list.ListFragment.LABEL_POSITION;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.gwp.lifestyle.R;
 import com.gwp.lifestyle.databinding.FragmentImageDetailBinding;
-import com.squareup.picasso.Picasso;
 
 
 public class ImageDetailFragment extends Fragment {

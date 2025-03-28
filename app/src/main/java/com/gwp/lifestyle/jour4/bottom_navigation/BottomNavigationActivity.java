@@ -3,6 +3,7 @@ package com.gwp.lifestyle.jour4.bottom_navigation;
 import static com.gwp.lifestyle.jour5.permissions.PermissionsDetails.checkAndRequestNotificationPermission;
 import static com.gwp.lifestyle.jour5.permissions.PermissionsGlobal.REQUEST_CODE_PERMISSION;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gwp.lifestyle.R;
 import com.gwp.lifestyle.databinding.ActivityBottomNavigationBinding;
 import com.gwp.lifestyle.jour5.InternetCheckService;
+import com.gwp.lifestyle.jour5.permissions.PermissionsGlobal;
 
 public class BottomNavigationActivity extends AppCompatActivity {
 
@@ -48,11 +50,15 @@ public class BottomNavigationActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 //        PermissionsGlobal.requestPermissions(this);
+//        Request Permission pour un singleton
         permissionNotification = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 isGranted-> Toast.makeText(this,"Permission "+ (isGranted?"":"non " )+"Accordee",Toast.LENGTH_SHORT).show()
         );
         checkAndRequestNotificationPermission(this,permissionNotification);
+
+//        request permissions pour permission multiple
+        PermissionsGlobal.requestPermissions(this);
 //
 //        startInternetCheckService();
     }

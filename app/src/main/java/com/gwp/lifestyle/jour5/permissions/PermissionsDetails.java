@@ -1,5 +1,6 @@
 package com.gwp.lifestyle.jour5.permissions;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.POST_NOTIFICATIONS;
 
 import android.app.Activity;
@@ -23,6 +24,14 @@ public class PermissionsDetails {
     public static void checkAndRequestNotificationPermission(Activity activity, ActivityResultLauncher<String> launcher) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             checkAndRequestPermission(activity, POST_NOTIFICATIONS, launcher);
+        }
+    }
+
+//    ACCESS_COARSE_LOCATION
+
+    public static void checkAndRequestAccessPermission(Activity activity, ActivityResultLauncher<String> launcher) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            checkAndRequestPermission(activity, ACCESS_COARSE_LOCATION, launcher);
         }
     }
 
