@@ -2,27 +2,65 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
+
     <application
+        android:name=".LifeStyleApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/youtube"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/youtube_round"
+        android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeStyle"
         tools:targetApi="31">
         <activity
-            android:name=".jour2.ContactMaterialActivity"
-            android:exported="true">
+            android:name=".jour4.bottom_navigation.ui.list.ImageDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jour4.bottom_navigation.BottomNavigationActivity"
+            android:exported="true"
+            android:label="@string/title_activity_bootom_navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".jour3.viewpager.ViewpagerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".jour3.navigationdrawer.NaviagtionDrawerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_naviagtion_drawer"
+            android:theme="@style/Theme.LifeStyle.NoActionBar" />
+        <activity
+            android:name=".jour3.list_habitude.HabitudeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".jour2.ContactMaterialActivity"
+            android:exported="true" />
+        <activity
             android:name=".jour2.ContactActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".CatActivity"
             android:exported="false" />
@@ -30,6 +68,12 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.LifeStyle.NoActionBar" />
+        <receiver android:name=".jour5.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

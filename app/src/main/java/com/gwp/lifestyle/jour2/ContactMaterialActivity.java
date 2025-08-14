@@ -1,11 +1,14 @@
 package com.gwp.lifestyle.jour2;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -32,6 +35,7 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         ui = ActivityContactMaterialBinding.inflate(getLayoutInflater());
         setContentView(ui.getRoot());
         initFormField();
+        initFormValues();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.contact_material), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -77,14 +81,13 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
     }
 
     private void initFormValues(){
-        nom.setText("");
-        prenom.setText("");
-        email.setText("");
-        matricule.setText("");
-        session.setText("");
+        nom.setText(R.string.paterne_guiffo);
+        prenom.setText(R.string.paterne);
+        email.setText(R.string.my_email);
+        matricule.setText(R.string.exemple_matricule);
+        session.setText(R.string.exemple_Session);
         sexeM.setChecked(true);
         sexeF.setChecked(false);
-
     }
 
     @Override
@@ -93,30 +96,58 @@ public class ContactMaterialActivity extends AppCompatActivity implements View.O
         int id_view = v.getId();
         if(btnCree.getId()==id_view){
             if(validateInputs()){
-                handleSubmit();
-                Log.e(TAG,"");
+                setupDialogue("Resultats du Formulaire",resultForm(),
+                        (dialog, which) -> {
+                            Intent intent = new Intent(this, ContactActivity.class);
+                            startActivity(intent);
+                            finish();
+                        },
+                        (dialog,which)->{
+
+                        }
+                        ).show();
             }else{
                 Toast.makeText(this,getString(R.string.error_form_contact),Toast.LENGTH_SHORT).show();
             }
         }
         if(id_view==btnCancel.getId()){
-            initFormValues();
-            Toast.makeText(this,getString(R.string.sucess_init_form),Toast.LENGTH_SHORT).show();
+            setupDialogue("Confirmation de Reinitialisation","Voulez-vous reinitialiser?",
+                    (dialog,which)->{
+                        initFormValues();
+                        Toast.makeText(this,getString(R.string.sucess_init_form),Toast.LENGTH_SHORT).show();
+                    },(dialog,which)->{
+                        dialog.dismiss();
+                    }).show();
         }
+    }
+    private AlertDialog.Builder setupDialogue(String title, String message,
+                                              DialogInterface.OnClickListener positiveAction,
+                                              DialogInterface.OnClickListener negativeAction
+    ){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(R.string.ok,positiveAction)
+                .setNegativeButton(R.string.cancel,negativeAction);
+        return builder;
+    }
 
+    private String resultForm(){
+        String sex_value = sexeF.isChecked() ? "F" : "M";
+        return "Formulaire soumis : " +
+                "\nNom : " + nom.getText().toString() +
+                "\nPrenom : " + prenom.getText().toString() +
+                "\nEmail : " + email.getText().toString() +
+                "\nSexe : " + sex_value +
+                "\nMatricule : " + matricule.getText().toString() +
+                "\nSession : " + session.getText().toString();
     }
 
     private void handleSubmit() {
-            String sex_value = sexeF.isChecked() ? "F" : "M";
-            Toast.makeText(this, "Formulaire soumis : " +
-                            "\nNom : " + nom.getText().toString() +
-                            "\nPrenom : " + prenom.getText().toString() +
-                            "\nEmail : " + email.getText().toString() +
-                            "\nSexe : " + sex_value +
-                            "\nMatricule : " + matricule.getText().toString() +
-                            "\nSession : " + session.getText().toString(),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, resultForm(), Toast.LENGTH_LONG).show();
     }
+
+
 
 
     @Override

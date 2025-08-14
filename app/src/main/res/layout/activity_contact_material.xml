@@ -150,7 +150,6 @@
         android:layout_height="0dp"
         android:src="@drawable/centre_m2i"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnCreer"
         android:contentDescription="@string/todo"
         app:layout_constraintTop_toBottomOf="@id/btnCreer"
         android:scaleType="fitCenter"
